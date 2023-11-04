@@ -9,25 +9,7 @@
   /*grid-gap: 10px;*/
 }
 
-.header {
-  grid-area: h;
-  background-color: cornflowerblue;
-}
-.header img {
-  width: 60px;
-}
-
-.nav {
-  grid-area: n;
-  background-color: cadetblue;
-}
-
-.content {
+.app-wrapper-content {
   grid-area: c;
   background-color: darkgray;
-}
-.content img {
-  width: 100%;
-  height: 300px;
-  background: unset;
 }

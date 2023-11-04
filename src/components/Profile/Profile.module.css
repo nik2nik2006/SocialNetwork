@@ -1,0 +1,11 @@
+.content {
+    grid-area: c;
+    background-color: darkgray;
+}
+
+.img {
+    width: 100%;
+    height: 300px;
+    background: unset;
+    object-fit: cover;
+}
