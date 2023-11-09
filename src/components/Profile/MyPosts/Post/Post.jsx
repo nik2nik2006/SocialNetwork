@@ -12,7 +12,6 @@ const Post = (props) => {
                 </span>
             </div>
         </div>
-
     )
 }
 
