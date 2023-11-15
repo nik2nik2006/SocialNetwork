@@ -35,7 +35,7 @@ let store = {
             ],
         }
     },
-    _callSubscrider() {
+    _callSubscriber() {
         console.log('State was changed')
     },
 
@@ -43,7 +43,7 @@ let store = {
         return this._state;
     },
     subscribe(observer) {
-        this._callSubscrider = observer;
+        this._callSubscriber = observer;
     },
 
     dispatch(action) { // {type: 'ADD-POST'}
@@ -55,11 +55,11 @@ let store = {
             };
             this._state.profilePage.posts.push(newPost);
             this._state.profilePage.newPostText = '';
-            this._callSubscrider(this._state);
+            this._callSubscriber(this._state);
         }
         else if (action.type === UPDATE_NEW_POST_TEXT) {
             this._state.profilePage.newPostText = action.newText;
-            this._callSubscrider(this._state);
+            this._callSubscriber(this._state);
         }
         else if (action.type === ADD_MESSAGE) {
             let newMessage = {
@@ -68,11 +68,11 @@ let store = {
             };
             this._state.dialogPage.messages.push(newMessage);
             this._state.dialogPage.newMessageText = '';
-            this._callSubscrider(this._state);
+            this._callSubscriber(this._state);
         }
         else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
             this._state.dialogPage.newMessageText = action.newText;
-            this._callSubscrider(this._state);
+            this._callSubscriber(this._state);
         }
     }
 }
