@@ -3,31 +3,28 @@ import s from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogsItem";
 import Message from "./Message/Message";
 import {
-    addMessageActionCreator,
-    updateNewMessageTextActionCreator,
+    sendMessageCreator,
+    updateNewMessageBodyCreator,
 } from "../../redux/state";
 
 
 const Dialogs = (props) => {
 
-    let dialogsElements =props.dialogPage.dialogs
-        .map( d => <DialogItem name={d.name} id={d.id}/>
-        );
+    let state = props.store.getState().dialogPage;
 
-    let messagesElements = props.dialogPage.messages
-        .map( m => <Message message={m.message} id={m.id}/>);
+    let dialogsElements =state.dialogs.map( d => <DialogItem name={d.name} id={d.id}/>);
 
-    let newMessageElement = React.createRef();
+    let messagesElements = state.messages.map( m => <Message message={m.message} id={m.id}/>);
 
+    let newMessageBody = state.newMessageBody;
 
-    let addMessage = () => {
-        props.dispatch(addMessageActionCreator())
+    let onSendMessageClick = () => {
+        props.store.dispatch(sendMessageCreator())
     }
 
-    let onMessageChange = () => {
-        let text = newMessageElement.current.value;
-        let action = updateNewMessageTextActionCreator(text);
-        props.dispatch(action);
+    let onNewMessageChange = (e) => {
+        let body = e.target.value;
+        props.store.dispatch(updateNewMessageBodyCreator(body));
     }
 
   return(
@@ -36,15 +33,15 @@ const Dialogs = (props) => {
               { dialogsElements }
           </div>
           <div className={s.messages}>
-              { messagesElements }
+              <div>{messagesElements}</div>
               <div>
-                  <textarea onChange={onMessageChange}
-                            ref={ newMessageElement }
-                            value={props.newMessageText}></textarea>
+                  <textarea placeholder='Enter your message'
+                            onChange={onNewMessageChange}
+                            value={ newMessageBody }></textarea>
               </div>
               <div>
-                  <button onClick={ addMessage }>
-                      Add post
+                  <button onClick={ onSendMessageClick }>
+                      Send
                   </button>
               </div>
           </div>
