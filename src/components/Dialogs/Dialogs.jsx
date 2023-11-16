@@ -5,7 +5,7 @@ import Message from "./Message/Message";
 import {
     sendMessageCreator,
     updateNewMessageBodyCreator,
-} from "../../redux/state";
+} from "../../redux/dialogsReducer";
 
 
 const Dialogs = (props) => {
@@ -13,9 +13,7 @@ const Dialogs = (props) => {
     let state = props.store.getState().dialogPage;
 
     let dialogsElements =state.dialogs.map( d => <DialogItem name={d.name} id={d.id}/>);
-
     let messagesElements = state.messages.map( m => <Message message={m.message} id={m.id}/>);
-
     let newMessageBody = state.newMessageBody;
 
     let onSendMessageClick = () => {
@@ -36,7 +34,7 @@ const Dialogs = (props) => {
               <div>{messagesElements}</div>
               <div>
                   <textarea placeholder='Enter your message'
-                            onChange={onNewMessageChange}
+                            onChange={ onNewMessageChange }
                             value={ newMessageBody }></textarea>
               </div>
               <div>
