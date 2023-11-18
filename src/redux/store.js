@@ -33,6 +33,7 @@ let store = {
                 {id: 6, name: 'Valera'},
             ],
         },
+        sidebar: {},
     },
     _callSubscriber() {
         console.log('State was changed')
