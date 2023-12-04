@@ -1,10 +1,9 @@
 import React from "react";
 import styles from "./users.module.css";
-import userPhoto from "../../assets/img/user_img.jpg"
+import userPhoto from "../../assets/img/user_img.jpg";
 
 
 let Users = (props) => {
-    debugger
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
     let pages = [];
     for (let i = 1; i <= pagesCount; i++) {
