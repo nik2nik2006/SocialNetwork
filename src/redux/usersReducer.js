@@ -1,4 +1,3 @@
-import users from "../components/Users/Users";
 
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
@@ -10,9 +9,9 @@ const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
 
 let initialState = {
     users: [],
-    pageSize: 20,
+    pageSize: 10,
     totalUsersCount: 0,
-    currentPage: 4
+    currentPage: 1
 };
 
 const usersReducer = (state = initialState, action) => {
