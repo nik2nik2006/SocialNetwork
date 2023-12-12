@@ -7,13 +7,12 @@ import withRouter from './withRouter';
 
 class ProfileContainer extends React.Component {
     componentDidMount() {
-        debugger
         let userId = this.props.params.userId;
         if (!userId) {
             userId = 2;
         }
         console.log(userId);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/`+userId).
+        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId).
         then(response => {
             this.props.setUserProfile(response.data);
         });
