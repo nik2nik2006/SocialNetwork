@@ -1,6 +1,5 @@
 import React from 'react';
 import Profile from "./Profile";
-import axios from "axios";
 import {setUserProfile} from "../../redux/profileReducer";
 import {connect} from "react-redux";
 import withRouter from './withRouter';
