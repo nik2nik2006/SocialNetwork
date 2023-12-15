@@ -1,3 +1,5 @@
+import {headerAPI} from "../api/api";
+
 const SET_USER_DATA = 'SET_USER_DATA';
 const UNFOLLOW = 'UNFOLLOW';
 
@@ -23,6 +25,17 @@ const authReducer = (state = initialState, action) => {
 }
 
 export const setAuthUserData = (userId, email, login) => ({type: SET_USER_DATA, data: {userId, email, login}})
+
+export const getAuthMe = () => {
+    return (dispatch) => {
+        headerAPI.getAuthMe().then(data => {
+            if (data.resultCode === 0) {
+                let {id, login, email} = data.data;
+                dispatch(setAuthUserData(id, email, login));
+            }
+        });
+    }
+}
 
 export default authReducer;
 
