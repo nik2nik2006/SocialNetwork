@@ -24,7 +24,7 @@ const ProfileInfo = (props) => {
                     {props.profile.contacts.facebook}
                 </div>
                 <div>
-                    <ProfileStatus />
+                    <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
                 </div>
             </div>
         </div>
