@@ -1,38 +1,41 @@
 import React from 'react';
 import s from './MyPosts.module.css'
 import Post from "./Post/Post";
-import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/profileReducer";
+import {Field, reduxForm} from "redux-form";
+
+
+const AddPostForm = (props) => {
+    return (
+        <form onSubmit={props.handleSubmit}>
+            <div>
+                <Field placeholder={"Enter your text"} name={"newPostText"} component={"input"}/>
+            </div>
+            <div>
+                <button>Add post</button>
+            </div>
+        </form>
+    )
+}
+
+const AddPostReduxForm = reduxForm({
+    form: 'ProfileAddPostForm',
+    // fields: ['firstName', 'lastName', 'email'] // all the fields in your form
+})(AddPostForm);
 
 
 const MyPosts = (props) => {
-
     let postsElements = props.posts.map(
         p => <Post message={p.message} likeCount={p.likeCount}/>);
 
-    let newPostElement = React.createRef();
-
-    let onAddPost = () => {
-        props.addPost();
-    };
-
-    let onPostChange = () => {
-        let text = newPostElement.current.value;
-        props.updateNewPostText(text)
+    const addNewPost = (formData) => {
+        props.addPost(formData.newPostText)
     }
 
     return (
         <div className={s.postsBlock}>
             <h3>My posts</h3>
             <div>
-                <div>
-                    <textarea onChange={onPostChange}
-                              placeholder='Enter your text'
-                              ref={ newPostElement }
-                              value={props.newPostText}/>
-                </div>
-                <div>
-                    <button onClick={ onAddPost }>Add post</button>
-                </div>
+                <AddPostReduxForm onSubmit={addNewPost}/>
             </div>
             <div className={s.posts}>
                 { postsElements }

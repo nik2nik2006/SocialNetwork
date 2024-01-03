@@ -2,7 +2,6 @@ import {profileAPI} from "../api/api";
 import {toggleFollowingProgress, unfollowSuccess} from "./usersReducer";
 
 const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_STATUS = 'SET_STATUS';
 
@@ -15,7 +14,6 @@ let initialState = {
         {id: 4, message: 'Yoxoxo', likeCount: 0},
         {id: 5, message: 'Yoshkin kot', likeCount: 7},
     ],
-    newPostText: '',
     profile: null,
     status: ""
 };
@@ -25,14 +23,7 @@ const profileReducer = (state=initialState, action) => {
         case ADD_POST: {
             return {
                 ...state,
-                posts: [...state.posts, {id: 6, message: state.newPostText, likeCount: 9}],
-                newPostText: ''
-            };
-        }
-        case UPDATE_NEW_POST_TEXT: {
-            return {
-                ...state,
-                newPostText: action.newText
+                posts: [...state.posts, {id: 6, message: action.newPostText, likeCount: 9}]
             };
         }
         case SET_STATUS: {
@@ -50,12 +41,9 @@ const profileReducer = (state=initialState, action) => {
 }
 
 
-export const addPostActionCreator = () => ({ type: ADD_POST })
+export const addPostActionCreator = (newPostText) => ({ type: ADD_POST, newPostText })
 export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE,  profile})
 export const setStatus = (status) => ({ type: SET_STATUS,  status})
-export const updateNewPostTextActionCreator = (text) => ({
-    type: UPDATE_NEW_POST_TEXT, newText: text
-})
 
 export const getProfile = (userId) => {
     return (dispatch) => {

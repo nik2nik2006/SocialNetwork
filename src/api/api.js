@@ -31,6 +31,11 @@ export const headerAPI = {
         return instance.get(`auth/me`).then(response => {
             return response.data
         })
+    },
+    getAuthLogin() {
+        return instance.post(`auth/login`, {}).then(response => {
+            return response.data
+        })
     }
 };
 export const profileAPI = {
