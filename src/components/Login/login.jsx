@@ -3,6 +3,7 @@ import {Field, reduxForm} from 'redux-form';
 import {Input} from "../Common/FormsControls/FormsControls";
 import {required} from "../../utils/validators/validadors";
 
+
 const LoginForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
