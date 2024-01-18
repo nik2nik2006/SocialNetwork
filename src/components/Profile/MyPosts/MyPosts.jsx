@@ -27,8 +27,11 @@ const AddPostReduxForm = reduxForm({
     // fields: ['firstName', 'lastName', 'email'] // all the fields in your form
 })(AddPostForm);
 
+window.props = [];
 
-const MyPosts = (props) => {
+function MyPosts(props) {
+    console.log("RENDER YO");
+
     let postsElements = props.posts.map(
         p => <Post message={p.message} likeCount={p.likeCount}/>);
 
@@ -47,6 +50,7 @@ const MyPosts = (props) => {
             </div>
         </div>
     )
+
 }
 
 export default MyPosts;
