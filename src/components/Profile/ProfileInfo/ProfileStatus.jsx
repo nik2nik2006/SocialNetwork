@@ -1,5 +1,4 @@
 import React from 'react';
-import s from './ProfileInfo.module.css'
 
 class ProfileStatus extends React.Component {
     statusInputRef = React.createRef()
@@ -27,13 +26,11 @@ class ProfileStatus extends React.Component {
         });
     }
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if (prevProps.status != this.props.status) {
+        if (prevProps.status !== this.props.status) {
             this.setState({
                 status: this.props.status
             });
         }
-        let a = this.state;
-        let b = this.props;
     }
 
     render() {
