@@ -4,7 +4,13 @@
 }
 
 .paginator {
+    cursor: pointer;
 }
 
 .pageNumber {
+    cursor: pointer;
+}
+
+.button {
+    cursor: pointer;
 }
