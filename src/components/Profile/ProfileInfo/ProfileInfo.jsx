@@ -12,7 +12,7 @@ const ProfileInfo = ({profile, status, updateStatus}) => {
         <div>
             <div className={s.descriptionBlock}>
                 <div>
-                    <img src={profile.photos.large != null ? profile.photos.large : userPhoto}
+                    <img src={profile.photos.large || userPhoto}
                          alt='типа рисунок' className={s.image}/>
                 </div>
                 <div>
