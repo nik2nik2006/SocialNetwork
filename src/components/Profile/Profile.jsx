@@ -10,10 +10,16 @@ const Profile = (props) => {
                          profile={props.profile}
                          status={props.status}
                          updateStatus={props.updateStatus}
-                         savePhoto={props.savePhoto}/>
+                         savePhoto={props.savePhoto}
+                         saveProfile={props.saveProfile}/>
             <MyPostsContainer />
         </div>
     )
 }
 
 export default Profile;
+
+
+
+
+

@@ -33,14 +33,14 @@ function MyPosts(props) {
     console.log("RENDER YO");
 
     let postsElements = props.posts.map(
-        p => <Post message={p.message} likeCount={p.likeCount}/>);
+        p => <Post key={p.id} message={p.message} likeCount={p.likeCount}/>);
 
     const addNewPost = (formData) => {
         props.addPost(formData.newPostText)
     }
 
     return (
-        <div className={s.postsBlock}>
+        <div >
             <h3>My posts</h3>
             <div>
                 <AddPostReduxForm onSubmit={addNewPost}/>
